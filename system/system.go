@@ -48,6 +48,10 @@ func timerfdSettime(fd int, flags int, new_value *ITimerSpec,
  * sleep. This is implemented by watching for a change in real time compared
  * with monotonic time. This may cause a spurious notification if the time
  * is changed by a user or NTP jump.
+ */Send a notification on @c when the system has just been resumed after
+ * sleep. This is implemented by watching for a change in real time compared
+ * with monotonic time. This may cause a spurious notification if the time
+ * is changed by a user or NTP jump.
  */
 func NotifyResumed(c chan int) {
 	ts := ITimerSpec{Interval: syscall.Timespec{math.MaxInt32, 0},
